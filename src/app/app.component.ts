@@ -10,14 +10,18 @@ import { Component } from '@angular/core';
         <label for="work">My Work</label>
         <input
           type="text"
-          class="form-control"
+          [class]="changeInputClass()"
           id="work"
           name="work"
           [(ngModel)]="work"
         />
       </div>
       <div class="form-group mt-2">
-        <button class="btn btn-outline-primary w-100" (click)="addTodo()">
+        <button
+          [disabled]="work.length < 3"
+          class="btn btn-outline-primary w-100"
+          (click)="addTodo()"
+        >
           Save
         </button>
       </div>
@@ -47,5 +51,11 @@ export class AppComponent {
     if (result) {
       this.works.splice(index, 1);
     }
+  }
+
+  changeInputClass() {
+    if (this.work.length < 3) return 'form-control is-invalid';
+
+    return 'form-control is-valid';
   }
 }
