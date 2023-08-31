@@ -15,6 +15,7 @@ import { Component } from '@angular/core';
           name="work"
           [(ngModel)]="work"
         />
+        <div class="invalid-feedback">You must write at least 3 letter!</div>
       </div>
       <div class="form-group mt-2">
         <button
